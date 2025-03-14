@@ -6,24 +6,27 @@ import os
 
 ventana = tk.Tk()
 
-# Verificar si estamos ejecutando como un ejecutable
-if getattr(sys, 'frozen', False):  # Si está en un ejecutable
+
+if getattr(sys, 'frozen', False): 
     ruta_icono = os.path.join(sys._MEIPASS, 'logardo.ico')
 else:
-    ruta_icono = 'logardo.ico'
+    ruta_icono = os.path.abspath('logardo.ico')
 
 # Configuración de la ventana
 ventana.title("YTExtractor")
 ventana.configure(bg="#181818")
 ventana.resizable(False, False)
-ventana.iconbitmap(ruta_icono)
 
-# Establecer el tamaño de la ventana
+try:
+    ventana.iconbitmap(ruta_icono)
+except tk.TclError:
+    print("error al encontrar el icono")
+
+
 ancho_ventana = 600
 alto_ventana = 500
 ventana.geometry(f"{ancho_ventana}x{alto_ventana}")
 
-# Centrar la ventana en la pantalla
 ancho = ventana.winfo_screenwidth()
 alto = ventana.winfo_screenheight()
 x = (ancho // 2) - (ancho_ventana // 2)
