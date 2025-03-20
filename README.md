@@ -14,9 +14,6 @@ Para poder ejecutar YTExtractor, necesitarás tener instalados los siguientes pa
 - [Tkinter](https://wiki.python.org/moin/TkInter) (generalmente viene preinstalado con Python)
 
 
-
-## Instalación
-
 ## Instalación
 
 1. **Clona este repositorio**:
