@@ -4,34 +4,29 @@ import yt_dlp
 import sys
 import os
 
-ventana = tk.Tk()
+root = tk.Tk()
 
 
-if getattr(sys, 'frozen', False): 
-    ruta_icono = os.path.join(sys._MEIPASS, 'logardo.ico')
-else:
-    ruta_icono = os.path.abspath('logardo.ico')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+logo = os.path.join(BASE_DIR, "img")
+
 
 # Configuración de la ventana
-ventana.title("YTExtractor")
-ventana.configure(bg="#181818")
-ventana.resizable(False, False)
-
-try:
-    ventana.iconbitmap(ruta_icono)
-except tk.TclError:
-    print("error al encontrar el icono")
+root.title("YTExtractor")
+root.configure(bg="#181818")
+root.resizable(False, False)
+root.iconbitmap(os.path.join(logo, "logardo.ico"))
 
 
 ancho_ventana = 600
 alto_ventana = 500
-ventana.geometry(f"{ancho_ventana}x{alto_ventana}")
+root.geometry(f"{ancho_ventana}x{alto_ventana}")
 
-ancho = ventana.winfo_screenwidth()
-alto = ventana.winfo_screenheight()
+ancho = root.winfo_screenwidth()
+alto = root.winfo_screenheight()
 x = (ancho // 2) - (ancho_ventana // 2)
 y = (alto // 2) - (alto_ventana // 2)
-ventana.geometry(f"{ancho_ventana}x{alto_ventana}+{x}+{y}")
+root.geometry(f"{ancho_ventana}x{alto_ventana}+{x}+{y}")
 
 # Función para descargar el video
 def descargar():
@@ -56,11 +51,11 @@ def descargar():
         Label2.config(text="Introduce la URL del video")
 
 # Label1
-Label1 = tk.Label(ventana, text="Descargador de videos de YouTube", bg="#FF0000", fg="white", font=("Roboto", 20, "bold"))
+Label1 = tk.Label(root, text="Descargador de videos de YouTube", bg="#FF0000", fg="white", font=("Roboto", 20, "bold"))
 Label1.place(relx=0.5, y=75, anchor="center")
 
 # Contenedor
-Contenedor = tk.Frame(ventana, bg="#202020", width=550, height=300)
+Contenedor = tk.Frame(root, bg="#202020", width=550, height=300)
 Contenedor.place(relx=0.5, y=300, anchor="center")
 
 # Label2
@@ -87,10 +82,10 @@ Boton1.place(x=x_btn1, y=y_btn1, width=ancho_btn1, height=alto_btn1)
 # Botón Salir
 ancho_btn2 = 100
 alto_btn2 = 50
-Boton2 = tk.Button(Contenedor, bg="#FF0000", text="Salir", command=ventana.quit, fg="white", font=("Roboto", 12, "bold"))
+Boton2 = tk.Button(Contenedor, bg="#FF0000", text="Salir", command=root.quit, fg="white", font=("Roboto", 12, "bold"))
 x_btn2 = (3 * 550 // 4) - (ancho_btn2 // 2)
 y_btn2 = (350 // 2) + (alto_btn2 // 2)
 Boton2.place(x=x_btn2, y=y_btn2, width=ancho_btn2, height=alto_btn2)
 
 # Mantener ventana
-ventana.mainloop()
+root.mainloop()

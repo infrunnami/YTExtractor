@@ -10,23 +10,39 @@ Para poder ejecutar YTExtractor, necesitarás tener instalados los siguientes pa
 
 - [Python 3.x](https://www.python.org/)
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp)
+- [ffmpeg](https://ffmpeg.org/download.html) (para evitar errores de audio)
 - [Tkinter](https://wiki.python.org/moin/TkInter) (generalmente viene preinstalado con Python)
 
 
 
 ## Instalación
 
+## Instalación
+
 1. **Clona este repositorio**:
-```bash
-git clone https://github.com/infrunnami/YTExtractor.git
-cd YTExtractor
-
+    ```sh
+    git clone https://github.com/infrunnami/YTExtractor.git
+    cd YTExtractor
+    ```
 2. **Instala las dependencias**:
-Si no tienes `yt-dlp` instalado, puedes instalarlo usando `pip`:
-```bash
-pip install yt-dlp
+    ```sh
+    pip install yt-dlp
+    ```
 
-3. **Genera el ejecutable**:
-Puedes hacerlo usando este comando en la consola: 
-```bash
-pyinstaller --onefile --windowed --icon=logardo.ico --name=YTExtractor --add-data "logardo.ico;." ventana.py
+3. **Instala `ffmpeg`** (para evitar errores de audio):
+
+   - **Windows**: Descárgalo desde [aquí](https://ffmpeg.org/download.html) y agrégalo al `PATH` del sistema.
+   - **Linux (Debian/Ubuntu)**:
+     ```sh
+     sudo apt update && sudo apt install ffmpeg
+     ```
+   - **MacOS** (si usas Homebrew):
+     ```sh
+     brew install ffmpeg
+     ```
+
+4. **Verifica la instalación de `ffmpeg`** ejecutando:
+    ```sh
+    ffmpeg -version
+    ```
+   Si muestra información sobre `ffmpeg`, está instalado correctamente.
